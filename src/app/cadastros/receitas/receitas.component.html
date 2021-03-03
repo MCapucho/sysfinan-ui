@@ -1,0 +1,33 @@
+<mat-card>
+    <form [formGroup]="formReceita" (ngSubmit)="onSubmit()">
+        <h3>Cadastro de Receita</h3>
+        <div fxLayout="row" fxLayoutAlign="space-between center"> 
+            <mat-form-field fxFlex="15" appearance="outline">
+                <mat-label>Código</mat-label>
+                <input matInput name="codigo" id="codigo" formControlName="codigo">
+            </mat-form-field>
+        
+            <mat-form-field fxFlex="80" appearance="outline">
+                <mat-label>Descrição</mat-label>
+                <input matInput maxlength="150" name="descricao" id="descricao" formControlName="descricao" 
+                       required autofocus>
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <mat-slide-toggle color="warn" name="ativo" id="ativo" formControlName="ativo">
+                {{ formReceita.value.ativo ? "Ativo" : "Inativo" }}
+            </mat-slide-toggle>
+
+            <div fxLayoutAlign="center center">
+                <button mat-raised-button color="warn" (click)="limparCampos()">
+                    Limpar
+                </button>
+                &nbsp;&nbsp;&nbsp;
+                <button mat-raised-button color="warn" type="submit" [disabled]="!formReceita.valid">
+                    Salvar
+                </button>
+            </div>
+        </div>
+    </form>
+</mat-card>
